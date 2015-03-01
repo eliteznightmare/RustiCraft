@@ -18,24 +18,19 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class Rusticraft {
 	@Instance("RustiCraft")
 	public static Rusticraft instance;
+	ServerEventHandler handler = new ServerEventHandler();
 	// Separating the client rendering from the calculation server side
 	@SidedProxy(clientSide = "rusticraft.client.ClientProxy", serverSide = "rusticraft.proxy.ServerProxy")
 	public static IProxy proxy;
-
-	// public static final Item ItemRock = new ItemRock();
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		
+		FMLCommonHandler.instance().bus().register(handler);
+		MinecraftForge.EVENT_BUS.register(handler);
 	}
-
 	@Mod.EventHandler
 	public void Init(FMLInitializationEvent event) {
 		// GameRegistry.registerItem(ItemRock, "rock");
 		proxy.init();
 		}
-
-	@Mod.EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
-
-	}
+	
 }
