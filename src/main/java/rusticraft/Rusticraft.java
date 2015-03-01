@@ -1,8 +1,11 @@
 package rusticraft;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.MinecraftForge;
 import rusticraft.item.ItemRock;
 import rusticraft.proxy.IProxy;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
@@ -11,23 +14,28 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = Reference.MODID, name = Reference.MODNAME, version= Reference.VERSION)
+@Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION)
 public class Rusticraft {
-	@Instance("CulinaryCraft")
+	@Instance("RustiCraft")
 	public static Rusticraft instance;
+	// Separating the client rendering from the calculation server side
 	@SidedProxy(clientSide = "rusticraft.client.ClientProxy", serverSide = "rusticraft.proxy.ServerProxy")
 	public static IProxy proxy;
-	public static final Item ItemRock = new ItemRock();
+
+	// public static final Item ItemRock = new ItemRock();
 	@Mod.EventHandler
-	public void preInit(FMLPreInitializationEvent event){
+	public void preInit(FMLPreInitializationEvent event) {
 		
 	}
+
 	@Mod.EventHandler
-	public void Init(FMLInitializationEvent event){
-		GameRegistry.registerItem(ItemRock, "rock");
-	}
+	public void Init(FMLInitializationEvent event) {
+		// GameRegistry.registerItem(ItemRock, "rock");
+		proxy.init();
+		}
+
 	@Mod.EventHandler
-	public void postInit(FMLPostInitializationEvent event){
-		
+	public void postInit(FMLPostInitializationEvent event) {
+
 	}
 }
