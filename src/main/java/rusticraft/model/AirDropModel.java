@@ -23,7 +23,7 @@ public class AirDropModel extends ModelBase {
 	ModelRenderer Ridge2;
 	ModelRenderer StepUp;
 
-	// assigning the components shapes, sizes, and rotation
+	// assigning the components shapes, sizes, and rotation of airdrop 3D model
 	public AirDropModel() {
 		textureWidth = 512;
 		textureHeight = 256;
@@ -148,6 +148,7 @@ public class AirDropModel extends ModelBase {
 		Ridge2.render(f5);
 		StepUp.render(f5);
 	}
+	
 	public void renderModel(Float f){
 		Base.render(f);
 		Block1.render(f);
