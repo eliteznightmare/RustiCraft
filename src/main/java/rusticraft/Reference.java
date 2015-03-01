@@ -1,5 +1,5 @@
 package rusticraft;
-
+//Reference Class for mod setup and resource loading
 public class Reference {
 	public static final String MODNAME = "RustiCraft";
 		public static final String MODID = "rusticraft";

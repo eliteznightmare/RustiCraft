@@ -8,11 +8,13 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import rusticraft.block.tile.TileEntityAirDrop;
+import rusticraft.block.tile.TileEntityBarrel;
 import rusticraft.entity.EntityAirDrop;
 import rusticraft.model.ModelAirDropFalling;
 import rusticraft.proxy.CommonProxy;
 import rusticraft.render.RenderAirDrop;
 import rusticraft.render.TileEntityAirDropRenderer;
+import rusticraft.render.TileEntityBarrelRender;
 
 public class ClientProxy extends CommonProxy{
 	
@@ -22,5 +24,8 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityAirDrop.class, new RenderAirDrop(new ModelAirDropFalling(), 0));
 		TileEntitySpecialRenderer render = new TileEntityAirDropRenderer();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAirDrop.class, new TileEntityAirDropRenderer());
+		
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBarrel.class, new TileEntityBarrelRender());
+		TileEntitySpecialRenderer renderer = new TileEntityBarrelRender();
 	}
 }

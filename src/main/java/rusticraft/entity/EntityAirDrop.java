@@ -15,10 +15,12 @@ public class EntityAirDrop extends EntityAnimal {
 
 	}
 
+	// makes the drop not rotate while in the air
 	public boolean isAIEnabled() {
 		return true;
 	}
 
+	// Makes the Entity tough and prevents it from moving
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)
@@ -27,32 +29,39 @@ public class EntityAirDrop extends EntityAnimal {
 				.setBaseValue(0.0D);
 	}
 
+	// Required by EntityAnimal
 	@Override
 	public EntityAgeable createChild(EntityAgeable p_90011_1_) {
 		return null;
 	}
+
 	Boolean f = false;
 	int yD;
+
 	@Override
 	public void onUpdate() {
+		// update coords and convert Double to Int
 		int xD = (int) posX;
 		int zD = (int) posZ;
 		int yF = (int) posY;
+		//makes Air Drop fall slower the the average entity
 		this.motionY *= 0.6D;
-		if (f == false){
-			//System.out.println("The first if has been accessed");
-			for (int g = 100; g > 0; g--){
-				//System.out.println("The second if has been accessed");
-				if (worldObj.getBlock(xD, g, zD) != Block.getBlockById(0)){
+		if (f == false) {
+			for (int g = 100; g > 0; g--) {
+				// Test for solid ground to land on
+				if (worldObj.getBlock(xD, g, zD) != Block.getBlockById(0)) {
 					yD = g;
 					g = 0;
 				}
-				}
 			}
-		if (yF == yD + 1){
-			//worldObj.setBlock(serverPosX, yD+1, serverPosZ, Rusticraft.airDrop);
-			worldObj.setBlock(serverPosX, yD+1, serverPosZ, Rusticraft.airDrop);
-			worldObj.scheduleBlockUpdate(serverPosX, yD+1, serverPosZ, Rusticraft.airDrop, 0);
+		}
+		if (yF == yD + 1) {
+			// set block and update for future rendering
+			worldObj.setBlock(serverPosX, yD + 1, serverPosZ,
+					Rusticraft.airDrop);
+			worldObj.scheduleBlockUpdate(serverPosX, yD + 1, serverPosZ,
+					Rusticraft.airDrop, 0);
+			// Kills the entity
 			this.setHealth(0F);
 		}
 		super.onUpdate();

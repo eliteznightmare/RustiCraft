@@ -24,17 +24,17 @@ public class airDrop extends BlockContainer {
 	public airDrop(Material p_i45394_1_) {
 		super(p_i45394_1_);
 	}
-
+	//Creates Tile entity, unused but required by forge
 	@Override
 	public TileEntity createNewTileEntity(World world, int metadata) {
 		return new TileEntityAirDrop();
 	}
-
+	//assign the Array to drop from the Block
 	@Override
 	public Item getItemDropped(int metadata, Random random, int fortune) {
-		return Item.getItemById(itemList[random.nextInt(itemList.length) - 1]);
+		return Item.getItemById(itemList[random.nextInt(itemList.length)]);
 	}
-
+	//Tells clients to not render how they would normaly render a block
 	@Override
 	public int getRenderType() {
 		return -1;
@@ -48,16 +48,16 @@ public class airDrop extends BlockContainer {
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
-
+	//Set the texture for the hotbar
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerBlockIcons(IIconRegister iconRegister) {
 		this.blockIcon = iconRegister.registerIcon("rusticraft:airdrop");
 	}
-
+	//Sets how many items to drop
 	@Override
 	public int quantityDropped(Random rand) {
 		
-		return rand.nextInt(15) + 1;
+		return rand.nextInt(16);
 	}
 }

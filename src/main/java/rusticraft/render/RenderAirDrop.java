@@ -9,7 +9,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderAirDrop extends RenderLiving{
-
+	//Locate the png
 	private static final ResourceLocation mobTextures = new ResourceLocation(Reference.MODID + ":textures/airdrop.png");
 	private static final String __OBFID = "CL_00000984";
 	
@@ -17,11 +17,11 @@ public class RenderAirDrop extends RenderLiving{
 		super(base, par2);
 		
 	}
-	
+	//return the textures
 	protected ResourceLocation getEntityTexture(EntityAirDrop entity){
 		return mobTextures;
 	}
-	
+	//return the textures
 	protected ResourceLocation getEntityTexture(Entity entity){
 		return this.getEntityTexture((EntityAirDrop)entity);
 	}

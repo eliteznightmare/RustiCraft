@@ -6,7 +6,7 @@ import net.minecraft.entity.Entity;
 
 public class ModelAirDropFalling extends ModelBase
 {
-//fields
+//Components of the model
  ModelRenderer Base;
  ModelRenderer Block1;
  ModelRenderer Block2;
@@ -32,7 +32,8 @@ public class ModelAirDropFalling extends ModelBase
  ModelRenderer ChuteLeft2;
  ModelRenderer ChuteRight1;
  ModelRenderer ChuteRight2;
-
+ 
+// assigning the components shapes, sizes, and rotation of airdrop 3D model
 public ModelAirDropFalling()
 {
  textureWidth = 512;
@@ -190,6 +191,7 @@ public ModelAirDropFalling()
    setRotation(ChuteRight2, 0F, 0F, -0.3839724F);
 }
 
+//pushing the components to render for the client
 public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
 {
  super.render(entity, f, f1, f2, f3, f4, f5);
@@ -221,6 +223,8 @@ public void render(Entity entity, float f, float f1, float f2, float f3, float f
  ChuteRight2.render(f5);
 }
 
+
+//align the model with the world around it
 private void setRotation(ModelRenderer model, float x, float y, float z)
 {
  model.rotateAngleX = x;

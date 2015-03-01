@@ -5,5 +5,5 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 
 public class TileEntityAirDrop extends TileEntityChest {
-	
+	//REQUIRED BUT NOT USED
 }
