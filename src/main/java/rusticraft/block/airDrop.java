@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 
 public class airDrop extends BlockContainer {
 
-	//Array of Item id's for the Airdrop to drop
+	// Array of Item id's for the Airdrop to drop
 	public static int[] itemList = { 19, 19, 34, 46, 46, 46, 46, 52, 90, 90,
 			90, 103, 119, 129, 129, 129, 130, 130, 130, 138, 152, 152, 152,
 			170, 170, 264, 282, 282, 282, 344, 349, 368, 388, 397, 2263, 316, };
@@ -48,9 +48,16 @@ public class airDrop extends BlockContainer {
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
+
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void registerBlockIcons(IIconRegister iconRegister){
-		this.blockIcon= iconRegister.registerIcon("rusticraft:airdrop");
+	public void registerBlockIcons(IIconRegister iconRegister) {
+		this.blockIcon = iconRegister.registerIcon("rusticraft:airdrop");
+	}
+
+	@Override
+	public int quantityDropped(Random rand) {
+		
+		return rand.nextInt(15) + 1;
 	}
 }
